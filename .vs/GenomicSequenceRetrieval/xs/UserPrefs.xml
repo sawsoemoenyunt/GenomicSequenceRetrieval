@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{AC1C40D3-9319-4AAA-AE54-71FE14D690B0}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GenomicSequenceRetrieval/SequenceRetrieval.cs">
+    <Files>
+      <File FileName="GenomicSequenceRetrieval/Program.cs" Line="1" Column="1" />
+      <File FileName="GenomicSequenceRetrieval/FastaReader.cs" Line="181" Column="2" />
+      <File FileName="GenomicSequenceRetrieval/Search.cs" Line="72" Column="1" />
+      <File FileName="GenomicSequenceRetrieval/SearchLevel1.cs" Line="46" Column="1" />
+      <File FileName="GenomicSequenceRetrieval/SearchLevel2.cs" Line="22" Column="1" />
+      <File FileName="GenomicSequenceRetrieval/SearchLevel3.cs" Line="96" Column="1" />
+      <File FileName="GenomicSequenceRetrieval/SequenceRetrieval.cs" Line="251" Column="25" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GenomicSequenceRetrieval" expanded="True">
+            <Node name="GenomicSequenceRetrieval" expanded="True">
+              <Node name="SequenceRetrieval.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.ItemProperties.GenomicSequenceRetrieval FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
