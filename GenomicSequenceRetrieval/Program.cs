@@ -12,6 +12,7 @@ namespace GenomicSequenceRetrieval
         {
             SequenceRetrieval sqr = new SequenceRetrieval(args);
             sqr.StartValidate();
+            Console.ReadLine();
         }
     }
 }

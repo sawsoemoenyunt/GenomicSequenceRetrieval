@@ -178,12 +178,12 @@ namespace GenomicSequenceRetrieval
                         }
                         else
                         {
-                            ShowError("");
+                            ShowError("Row count must be integer.");
                         }
                     }
                     else
                     {
-                        ShowError("");
+                        ShowError("Start row number must be integer.");
                     }
                 }
                 catch (Exception ex)

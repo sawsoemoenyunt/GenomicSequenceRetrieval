@@ -40,6 +40,11 @@ namespace GenomicSequenceRetrieval
             {
                 Console.WriteLine(result);
             }
+
+            if (resultList.Count == 0)
+            {
+                Console.WriteLine("No data to show. Start row number {0} not found.", this.startIndex);
+            }
         }
     }
 }
