@@ -61,6 +61,155 @@ namespace GenomicSequenceRetrieval
             reader.Close();
         }
 
+        //lvl4
+        public List<string> MakeIndexForID(string fileName)
+        {
+            this.reader.BaseStream.Seek(0, SeekOrigin.Begin);
+
+            List<string> idList = new List<string>();
+
+            string text = File.ReadAllText(fileName);
+            using (var rearder = new StringReader(text))
+            using (var trackingReader = new TrackingTextReader(rearder))
+            {
+                string line;
+                while ((line = trackingReader.ReadLine()) != null)
+                {
+                    if (line.StartsWith(">", StringComparison.Ordinal))
+                    {
+                        string[] metadata = line.Split(null);
+                        foreach (string data in metadata)
+                        {
+                            if (data.StartsWith(">", StringComparison.Ordinal))
+                            {
+                                int index = trackingReader.Position - (line.Length + 1);
+                                string id = data.Remove(0, 1) + " " + index;
+                                idList.Add(id);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return idList;
+        }
+
+        //lvl 4
+        public string DirectAccessByIndex(string id, int index)
+        {
+            this.reader.BaseStream.Seek(index, SeekOrigin.Begin);
+
+            string result = "";
+
+            if (id.ToCharArray().Length >= 11)
+            {
+                ///Search16s -level2 16S.fasta NR_115365.1
+
+                var line = reader.ReadLine();
+                if (string.IsNullOrEmpty(line))
+                {
+                    result = string.Format("Error, sequence {0} not found.", id);
+                }
+
+                if (line.StartsWith(">", StringComparison.Ordinal))
+                {
+                    ///metadata
+                    if (line.Contains(id))
+                    {
+                        result = line;
+                        string dna = reader.ReadLine();
+                        if (line.StartsWith("", StringComparison.Ordinal))
+                        {
+                            result += "\n" + dna;
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                result = string.Format("Error, sequence {0} not found.", id);
+            }
+
+            return result;
+        }
+
+        //lvl6
+        public List<string> GetIdListByName(string name)
+        {
+            List<string> idList = new List<string>();
+
+            while (true)
+            {
+                var line = reader.ReadLine();
+                if (string.IsNullOrEmpty(line))
+                {
+                    break;
+                }
+
+                if (line.StartsWith(">", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (line.Contains(name))
+                    {
+                        string[] metadata = line.Split(null);
+
+                        foreach (string data in metadata)
+                        {
+                            if (data.StartsWith(">", StringComparison.Ordinal))
+                            {
+                                string id = data.Remove(0, 1);
+                                idList.Add(id);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return idList;
+        }
+
+        //lvl5
+        public List<string> GetIdListBySequence(string sequence)
+        {
+            List<string> idList = new List<string>();
+
+            string tempId = "";
+            string tempSequence = "";
+
+            while (true)
+            {
+                var line = reader.ReadLine();
+                if (string.IsNullOrEmpty(line))
+                {
+                    break;
+                }
+
+                if (line.StartsWith(">", StringComparison.OrdinalIgnoreCase))
+                {
+                    tempId = line;
+                }
+                else
+                {
+                    if (line.Contains(sequence))
+                    {
+                        tempSequence = line;
+
+                        string[] metadata = tempId.Split(null);
+
+                        foreach (string data in metadata)
+                        {
+                            if (data.StartsWith(">", StringComparison.Ordinal))
+                            {
+                                string id = data.Remove(0, 1);
+                                idList.Add(id);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return idList;
+        }
 
         ///<summary>
         ///    Search DNA seqence by SequenceID

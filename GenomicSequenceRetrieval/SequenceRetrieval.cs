@@ -14,7 +14,11 @@ namespace GenomicSequenceRetrieval
     {
         Level1 = 1,
         Level2 = 2,
-        Level3 = 3
+        Level3 = 3,
+        Level4 = 4,
+        Level5 = 5,
+        Level6 = 6,
+        Level7 = 7
     }
 
     ///<summary>
@@ -98,6 +102,14 @@ namespace GenomicSequenceRetrieval
             {
                 this.level = FlagLevel.Level3;
             }
+            else if (args[1].Equals("-level5"))
+            {
+                this.level = FlagLevel.Level5;
+            }
+            else if (args[1].Equals("-level6"))
+            {
+                this.level = FlagLevel.Level6;
+            }
             else
             {
                 ShowError("Please enter valid level.");
@@ -147,6 +159,16 @@ namespace GenomicSequenceRetrieval
                 case FlagLevel.Level3:
                     ///level 3
                     Level3Search();
+                    break;
+
+                case FlagLevel.Level5:
+                    ///level 5
+                    Level5Search();
+                    break;
+
+                case FlagLevel.Level6:
+                    ///level 6
+                    Level6Search();
                     break;
 
                 default:
@@ -261,6 +283,56 @@ namespace GenomicSequenceRetrieval
             else
             {
                 ShowError("-level3 required 5 valid arguments.");
+            }
+        }
+
+        ///<summary>
+        ///Create level5 search after that start searching and showing resutls
+        ///</summary>
+        private void Level5Search()
+        {
+            if (args.Length == 4)
+            {
+                string dna = args[3];
+                try
+                {
+                    SearchLevel5 search2 = new SearchLevel5(programName, level, fileName, dna);
+                    search2.StartSearching();
+                    search2.ShowResult();
+                }
+                catch (Exception ex)
+                {
+                    ShowError(ex.Message);
+                }
+            }
+            else
+            {
+                ShowError("-level5 required 4 valid arguments.");
+            }
+        }
+
+        ///<summary>
+        ///Create level6 search after that start searching and showing resutls
+        ///</summary>
+        private void Level6Search()
+        {
+            if (args.Length == 4)
+            {
+                string metaData = args[3];
+                try
+                {
+                    SearchLevel6 search2 = new SearchLevel6(programName, level, fileName, metaData);
+                    search2.StartSearching();
+                    search2.ShowResult();
+                }
+                catch (Exception ex)
+                {
+                    ShowError(ex.Message);
+                }
+            }
+            else
+            {
+                ShowError("-level6 required 4 valid arguments.");
             }
         }
 

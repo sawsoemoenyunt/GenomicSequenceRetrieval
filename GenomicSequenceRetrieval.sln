@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenomicSequenceRetrieval", "GenomicSequenceRetrieval\GenomicSequenceRetrieval.csproj", "{AC1C40D3-9319-4AAA-AE54-71FE14D690B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexSequence16s", "IndexSequence16s\IndexSequence16s.csproj", "{962D98FB-2265-46B6-BF28-66AA84F9D164}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
@@ -13,5 +15,9 @@ Global
 		{AC1C40D3-9319-4AAA-AE54-71FE14D690B0}.Debug|anycpu.Build.0 = Debug|anycpu
 		{AC1C40D3-9319-4AAA-AE54-71FE14D690B0}.Release|anycpu.ActiveCfg = Release|anycpu
 		{AC1C40D3-9319-4AAA-AE54-71FE14D690B0}.Release|anycpu.Build.0 = Release|anycpu
+		{962D98FB-2265-46B6-BF28-66AA84F9D164}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{962D98FB-2265-46B6-BF28-66AA84F9D164}.Debug|anycpu.Build.0 = Debug|anycpu
+		{962D98FB-2265-46B6-BF28-66AA84F9D164}.Release|anycpu.ActiveCfg = Release|anycpu
+		{962D98FB-2265-46B6-BF28-66AA84F9D164}.Release|anycpu.Build.0 = Release|anycpu
 	EndGlobalSection
 EndGlobal

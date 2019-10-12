@@ -1,19 +1,23 @@
 ﻿<Properties StartupConfiguration="{AC1C40D3-9319-4AAA-AE54-71FE14D690B0}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="GenomicSequenceRetrieval/SequenceRetrieval.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GenomicSequenceRetrieval/TrackingReader.cs">
     <Files>
-      <File FileName="GenomicSequenceRetrieval/Program.cs" Line="15" Column="32" />
-      <File FileName="GenomicSequenceRetrieval/FastaReader.cs" />
-      <File FileName="GenomicSequenceRetrieval/Search.cs" />
-      <File FileName="GenomicSequenceRetrieval/SearchLevel1.cs" />
-      <File FileName="GenomicSequenceRetrieval/SearchLevel2.cs" />
-      <File FileName="GenomicSequenceRetrieval/SearchLevel3.cs" />
-      <File FileName="GenomicSequenceRetrieval/SequenceRetrieval.cs" Line="181" Column="69" />
+      <File FileName="GenomicSequenceRetrieval/FastaReader.cs" Line="133" Column="1" />
+      <File FileName="GenomicSequenceRetrieval/SearchLevel1.cs" Line="19" Column="140" />
+      <File FileName="GenomicSequenceRetrieval/SearchLevel5.cs" Line="12" Column="9" />
+      <File FileName="GenomicSequenceRetrieval/SearchLevel6.cs" Line="30" Column="18" />
+      <File FileName="GenomicSequenceRetrieval/SequenceRetrieval.cs" Line="336" Column="14" />
+      <File FileName="IndexSequence16s/Program.cs" Line="7" Column="19" />
+      <File FileName="IndexSequence16s/SearchLevel4.cs" Line="61" Column="6" />
+      <File FileName="GenomicSequenceRetrieval/TrackingReader.cs" Line="2" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GenomicSequenceRetrieval" expanded="True">
-            <Node name="GenomicSequenceRetrieval" expanded="True" selected="True" />
+            <Node name="GenomicSequenceRetrieval" expanded="True">
+              <Node name="TrackingReader.cs" selected="True" />
+            </Node>
+            <Node name="IndexSequence16s" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -21,6 +25,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.ItemProperties.IndexSequence16s FirstBuild="True" />
   <MonoDevelop.Ide.ItemProperties.GenomicSequenceRetrieval PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
