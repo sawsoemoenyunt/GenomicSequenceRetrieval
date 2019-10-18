@@ -1,0 +1,8 @@
+/Users/macbookpro/Projects/GenomicSequenceRetrieval/IndexSequence16s/bin/Debug/IndexSequence16s.exe
+/Users/macbookpro/Projects/GenomicSequenceRetrieval/IndexSequence16s/bin/Debug/IndexSequence16s.pdb
+/Users/macbookpro/Projects/GenomicSequenceRetrieval/IndexSequence16s/bin/Debug/GenomicSequenceRetrieval.exe
+/Users/macbookpro/Projects/GenomicSequenceRetrieval/IndexSequence16s/bin/Debug/GenomicSequenceRetrieval.pdb
+/Users/macbookpro/Projects/GenomicSequenceRetrieval/IndexSequence16s/obj/anycpu/Debug/IndexSequence16s.csprojAssemblyReference.cache
+/Users/macbookpro/Projects/GenomicSequenceRetrieval/IndexSequence16s/obj/anycpu/Debug/IndexSequence16s.csproj.CopyComplete
+/Users/macbookpro/Projects/GenomicSequenceRetrieval/IndexSequence16s/obj/anycpu/Debug/IndexSequence16s.exe
+/Users/macbookpro/Projects/GenomicSequenceRetrieval/IndexSequence16s/obj/anycpu/Debug/IndexSequence16s.pdb

@@ -1,6 +1,5 @@
 /Users/macbookpro/Projects/GenomicSequenceRetrieval/GenomicSequenceRetrieval/bin/Debug/GenomicSequenceRetrieval.exe
 /Users/macbookpro/Projects/GenomicSequenceRetrieval/GenomicSequenceRetrieval/bin/Debug/GenomicSequenceRetrieval.pdb
 /Users/macbookpro/Projects/GenomicSequenceRetrieval/GenomicSequenceRetrieval/obj/Debug/GenomicSequenceRetrieval.csprojAssemblyReference.cache
-/Users/macbookpro/Projects/GenomicSequenceRetrieval/GenomicSequenceRetrieval/obj/Debug/GenomicSequenceRetrieval.csproj.CoreCompileInputs.cache
 /Users/macbookpro/Projects/GenomicSequenceRetrieval/GenomicSequenceRetrieval/obj/Debug/GenomicSequenceRetrieval.exe
 /Users/macbookpro/Projects/GenomicSequenceRetrieval/GenomicSequenceRetrieval/obj/Debug/GenomicSequenceRetrieval.pdb

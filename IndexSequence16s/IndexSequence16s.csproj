@@ -34,7 +34,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchLevel4.cs" />
+    <Compile Include="TextReaderTracker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenomicSequenceRetrieval\GenomicSequenceRetrieval.csproj">
