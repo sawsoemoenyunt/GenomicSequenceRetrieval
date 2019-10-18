@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace GenomicSequenceRetrieval
 {
@@ -20,6 +21,8 @@ namespace GenomicSequenceRetrieval
     {
         ///<summary>a private variable to store StreamReader</summary>
         private StreamReader reader;
+
+        private string filePath;
 
         /*
             Intialize FastaReader
@@ -42,14 +45,8 @@ namespace GenomicSequenceRetrieval
         ///</exception>
         public FastaReader(string filePath)
         {
-            try
-            {
-                reader = new StreamReader(filePath);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            this.filePath = filePath;
+            this.Open();
         }
 
 
@@ -61,42 +58,59 @@ namespace GenomicSequenceRetrieval
             reader.Close();
         }
 
-        //lvl4
-        public List<string> MakeIndexForID(string fileName)
+        public void Open()
         {
+            try
+            {
+                reader = new StreamReader(this.filePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        //lvl7
+        public List<string> SearchSequenceWithRegex(string sequencePattern)
+        {
+            this.Open();
+            List<string> resultList = new List<string>();
+
             this.reader.BaseStream.Seek(0, SeekOrigin.Begin);
 
-            List<string> idList = new List<string>();
+            string temp_metada = "";
 
-            string text = File.ReadAllText(fileName);
-            using (var rearder = new StringReader(text))
-            using (var trackingReader = new TrackingTextReader(rearder))
+            while (true)
             {
-                string line;
-                while ((line = trackingReader.ReadLine()) != null)
+                var line = reader.ReadLine();
+                if (string.IsNullOrEmpty(line))
                 {
-                    if (line.StartsWith(">", StringComparison.Ordinal))
+                    break;
+                }
+
+                if (line.StartsWith(">", StringComparison.Ordinal))
+                {
+                    ///metadata
+                    temp_metada = line;
+                }
+                else
+                {
+                    //sequence
+                    if (Regex.IsMatch(line, sequencePattern))
                     {
-                        string[] metadata = line.Split(null);
-                        foreach (string data in metadata)
-                        {
-                            if (data.StartsWith(">", StringComparison.Ordinal))
-                            {
-                                int index = trackingReader.Position - (line.Length + 1);
-                                string id = data.Remove(0, 1) + " " + index;
-                                idList.Add(id);
-                            }
-                        }
+                        temp_metada = temp_metada + "\n" + line;
+                        resultList.Add(temp_metada);
                     }
                 }
             }
-
-            return idList;
+            this.Close();
+            return resultList;
         }
 
         //lvl 4
         public string DirectAccessByIndex(string id, int index)
         {
+            this.Open();
             this.reader.BaseStream.Seek(index, SeekOrigin.Begin);
 
             string result = "";
@@ -131,6 +145,7 @@ namespace GenomicSequenceRetrieval
                 result = string.Format("Error, sequence {0} not found.", id);
             }
 
+            this.Close();
             return result;
         }
 
@@ -171,6 +186,7 @@ namespace GenomicSequenceRetrieval
         //lvl5
         public List<string> GetIdListBySequence(string sequence)
         {
+            this.Open();
             List<string> idList = new List<string>();
 
             string tempId = "";
@@ -207,6 +223,7 @@ namespace GenomicSequenceRetrieval
                     }
                 }
             }
+            this.Close();
 
             return idList;
         }
@@ -227,6 +244,7 @@ namespace GenomicSequenceRetrieval
         ///</example>
         public string SequentialAccessByID(string id)
         {
+            this.Open();
             this.reader.BaseStream.Seek(0, SeekOrigin.Begin);
 
             string result = "";
@@ -263,6 +281,7 @@ namespace GenomicSequenceRetrieval
             {
                 result = string.Format("Error, sequence {0} not found.", id);
             }
+            this.Close();
 
             return result;
         }

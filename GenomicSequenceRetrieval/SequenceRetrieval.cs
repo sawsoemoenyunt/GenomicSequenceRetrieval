@@ -102,6 +102,10 @@ namespace GenomicSequenceRetrieval
             {
                 this.level = FlagLevel.Level3;
             }
+            else if (args[1].Equals("-level4"))
+            {
+                this.level = FlagLevel.Level4;
+            }
             else if (args[1].Equals("-level5"))
             {
                 this.level = FlagLevel.Level5;
@@ -159,6 +163,11 @@ namespace GenomicSequenceRetrieval
                 case FlagLevel.Level3:
                     ///level 3
                     Level3Search();
+                    break;
+
+                case FlagLevel.Level4:
+                    ///level 4
+                    Level4Search();
                     break;
 
                 case FlagLevel.Level5:
@@ -283,6 +292,49 @@ namespace GenomicSequenceRetrieval
             else
             {
                 ShowError("-level3 required 5 valid arguments.");
+            }
+        }
+
+        ///<summary>
+        ///Create level5 search after that start searching and showing resutls
+        ///</summary>
+        private void Level4Search()
+        {
+            if (args.Length == 6)
+            {
+                string indexFileName, queryFileName, resultFileName;
+                try
+                {
+                    indexFileName = args[3];
+                    queryFileName = args[4];
+                    resultFileName = args[5];
+
+                    if (indexFileName.Contains(".index") && queryFileName.Contains(".txt") && resultFileName.Contains(".txt"))
+                    {
+                        try
+                        {
+                            SearchLevel4 search4 = new SearchLevel4(programName, level, fileName, indexFileName, queryFileName, resultFileName);
+                            search4.StartSearching();
+                            search4.ShowResult();
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowError(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        ShowError("An error occured. Wrong file format.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowError(ex.Message + "\nPlease enter a valid command.");
+                }
+            }
+            else
+            {
+                ShowError("-level4 required 6 valid arguments.");
             }
         }
 
