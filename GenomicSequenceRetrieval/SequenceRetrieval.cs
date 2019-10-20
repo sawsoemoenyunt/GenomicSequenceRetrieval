@@ -114,6 +114,10 @@ namespace GenomicSequenceRetrieval
             {
                 this.level = FlagLevel.Level6;
             }
+            else if (args[1].Equals("-level7"))
+            {
+                this.level = FlagLevel.Level7;
+            }
             else
             {
                 ShowError("Please enter valid level.");
@@ -178,6 +182,10 @@ namespace GenomicSequenceRetrieval
                 case FlagLevel.Level6:
                     ///level 6
                     Level6Search();
+                    break;
+                case FlagLevel.Level7:
+                    ///level 7
+                    Level7Search();
                     break;
 
                 default:
@@ -376,6 +384,31 @@ namespace GenomicSequenceRetrieval
                     SearchLevel6 search2 = new SearchLevel6(programName, level, fileName, metaData);
                     search2.StartSearching();
                     search2.ShowResult();
+                }
+                catch (Exception ex)
+                {
+                    ShowError(ex.Message);
+                }
+            }
+            else
+            {
+                ShowError("-level6 required 4 valid arguments.");
+            }
+        }
+
+        ///<summary>
+        ///Create level7 search after that start searching and showing resutls
+        ///</summary>
+        private void Level7Search()
+        {
+            if (args.Length == 4)
+            {
+                string regexPattern = args[3];
+                try
+                {
+                    SearchLevel7 search = new SearchLevel7(programName, level, fileName, regexPattern);
+                    search.StartSearching();
+                    search.ShowResult();
                 }
                 catch (Exception ex)
                 {

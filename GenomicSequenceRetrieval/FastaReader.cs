@@ -58,6 +58,9 @@ namespace GenomicSequenceRetrieval
             reader.Close();
         }
 
+        ///<summary>
+        ///    Open FastaReader
+        ///</summary>
         public void Open()
         {
             try
@@ -70,7 +73,20 @@ namespace GenomicSequenceRetrieval
             }
         }
 
-        //lvl7
+        ///<summary>
+        ///    Search dna by regex
+        ///</summary>
+        ///<remark>
+        ///<returns>
+        ///Found records
+        ///</returns>
+        ///</remark>
+        ///<example>
+        ///<code>
+        ///    FastaReader fastaReader = new FastaReader("filename.fasta");
+        ///    string foundRow = fastaReader.SearchSequenceWithRegex(sequencePattern);
+        ///</code>
+        ///</example>
         public List<string> SearchSequenceWithRegex(string sequencePattern)
         {
             this.Open();
@@ -98,7 +114,7 @@ namespace GenomicSequenceRetrieval
                     //sequence
                     if (Regex.IsMatch(line, sequencePattern))
                     {
-                        temp_metada = temp_metada + "\n" + line;
+                        //temp_metada = temp_metada + "\n" + line; uncomment this to show both metadata and sequence
                         resultList.Add(temp_metada);
                     }
                 }
@@ -107,7 +123,20 @@ namespace GenomicSequenceRetrieval
             return resultList;
         }
 
-        //lvl 4
+        ///<summary>
+        ///    Search dna by index
+        ///</summary>
+        ///<remark>
+        ///<returns>
+        ///The found record
+        ///</returns>
+        ///</remark>
+        ///<example>
+        ///<code>
+        ///    FastaReader fastaReader = new FastaReader("filename.fasta");
+        ///    string foundRow = fastaReader.DirectAccessByIndex(sequencID, index);
+        ///</code>
+        ///</example>
         public string DirectAccessByIndex(string id, int index)
         {
             this.Open();
@@ -149,9 +178,23 @@ namespace GenomicSequenceRetrieval
             return result;
         }
 
-        //lvl6
+        ///<summary>
+        ///    Search list of ID by sequence name
+        ///</summary>
+        ///<remark>
+        ///<returns>
+        ///The list of ID
+        ///</returns>
+        ///</remark>
+        ///<example>
+        ///<code>
+        ///    FastaReader fastaReader = new FastaReader("filename.fasta");
+        ///    string foundRow = fastaReader.GetIdListByName(sequenceName);
+        ///</code>
+        ///</example>
         public List<string> GetIdListByName(string name)
         {
+            this.Open();
             List<string> idList = new List<string>();
 
             while (true)
@@ -179,11 +222,25 @@ namespace GenomicSequenceRetrieval
                     }
                 }
             }
+            this.Close();
 
             return idList;
         }
 
-        //lvl5
+        ///<summary>
+        ///    Search list of ID by sequence
+        ///</summary>
+        ///<remark>
+        ///<returns>
+        ///The list of ID
+        ///</returns>
+        ///</remark>
+        ///<example>
+        ///<code>
+        ///    FastaReader fastaReader = new FastaReader("filename.fasta");
+        ///    string foundRow = fastaReader.GetIdListBySequence(sequence);
+        ///</code>
+        ///</example>
         public List<string> GetIdListBySequence(string sequence)
         {
             this.Open();
@@ -302,7 +359,7 @@ namespace GenomicSequenceRetrieval
         ///</example>
         public List<String> SequentialAccessByStartingPosition(int start, int rowCount = 1)
         {
-
+            Open();
             List<string> sequences = new List<string>();
 
             int sequenceCounter = 0;

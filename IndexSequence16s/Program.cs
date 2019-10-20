@@ -88,10 +88,10 @@ namespace IndexSequence16s
             try
             {
                 string currentPath = AppDomain.CurrentDomain.BaseDirectory.Replace(programName, "GenomicSequenceRetrieval");
-                Console.WriteLine(currentPath);
+                //Console.WriteLine(currentPath);
                 string text = File.ReadAllText(currentPath + fileName);
                 using (var rearder = new StringReader(text))
-                using (var trackingReader = new TrackingTextReader(rearder))
+                using (var trackingReader = new TextReaderTracker(rearder))
                 {
                     string line;
                     while ((line = trackingReader.ReadLine()) != null)
@@ -126,7 +126,7 @@ namespace IndexSequence16s
             try
             {
                 string currentPath = AppDomain.CurrentDomain.BaseDirectory.Replace(programName, "GenomicSequenceRetrieval");
-                Console.WriteLine(currentPath);
+                //Console.WriteLine(currentPath);
                 StreamWriter wr = new StreamWriter(currentPath + indexFileName);
                 foreach (string index in indexList)
                 {
